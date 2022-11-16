@@ -8,38 +8,154 @@
   <link rel="shortcut icon"
     href="https://media-exp1.licdn.com/dms/image/C4D0BAQEzMIjVtCkxZA/company-logo_200_200/0/1647001635386?e=2147483647&v=beta&t=HsKR68k8_bT-IbDA3zHjhB-g5J4yxKtEfId8xEGLuhY"
     type="image/x-icon" />
-  <title>Document</title>
+  <title>DEVinKnowledge</title>
   <link rel="stylesheet" href="style.css">
   <script async src="index.js" type="module"></script>
 </head>
 
 <body>
-  <!--<header>
-    <h2>Usuários do sistema</h2>
-  </header>
-  <label for="input">Aperte Enter para confirmar: Maximo de 10 usuarios</label>
-  <input id="input" type="number" placeholder="quantos usuarios mostrar: maximo 10" value="4">
-  <main>
-    <ul>
-      <li>
-        <img src="https://randomuser.me/api/portraits/women/54.jpg" alt="">
-        <span>
-          <p>nome</p>
-          <p>email</p>
-          <p>endereço</p>
-        </span>
-      </li>
+  <section class="right-side">
 
-      <li>
-        <img src="https://randomuser.me/api/portraits/women/54.jpg" alt="">
-        <span>
-          <p>nome</p>
-          <p>email</p>
-          <p>endereço</p>
-        </span>
-      </li>
-    </ul>
-  </main>-->
+    <header><img src="/images/book 1.png" alt="logo-book">
+      <div class="container-title">
+        <div class="container-title-upper">
+          <h3>DEVin</h3>
+          <h2>Knowledge</h2>
+        </div>
+        <p>Learn, Code and Save</p>
+      </div>
+    </header>
+
+    <form action="" method="post">
+      <div class="form-container-input-label">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" placeholder="Digite um título" minlength="8" maxlength="64" required>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="linguagem_skill">Linguagem/Skill</label>
+        <input id="linguagem_skill" type="text" placeholder="Digite uma linguagem ou skill" minlength="2" maxlength="16"
+          required>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" required>
+          <option value="" selected disabled hidden>Selecione uma categoria</option>
+          <option value="frontend">FrontEnd</option>
+          <option value="backend">BackEnd </option>
+          <option value="fullstack ">FullStack </option>
+          <option value="comportamental_soft">Comportamental/Soft</option>
+        </select>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" id="descricao" cols="30" rows="10"
+          placeholder="Escreva aqui o detalhamento da sua dica..." minlength="16" maxlength="512" required></textarea>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="youtube_link">Video do YouTube</label>
+        <input id="youtube_link" name="youtube_link" type="url" placeholder="https://suaurl.com" pattern="https?://.+">
+      </div>
+
+      <div class="form-container-buttons">
+        <button id="reset" type="reset" class="button">Limpar</button>
+        <button id="save" type="submit" class="button">Salvar</button>
+      </div>
+    </form>
+
+  </section>
+
+  <section class="left-side">
+    <div class="container-cards">
+      <div id="container_card_total" class="container-card">total <p>20</p>
+      </div>
+      <div class="container-card">FrontEnd <p>2</p>
+      </div>
+      <div class="container-card">BackEnd <p>3</p>
+      </div>
+      <div class="container-card">FullStack <p>21</p>
+      </div>
+      <div class="container-card">SoftSkill <p>7</p>
+      </div>
+    </div>
+
+
+    <form class="search-elements-container" action="" method="post">
+      <input id="search" name="search" type="text" placeholder="Digite um título para buscar...">
+      <button type="submit"><i class="fa fa-search"></i></button>
+      <button type="reset"><i class="fa-solid fa-x"></i></button>
+    </form>
+
+    <main class="main-content">
+      <article class="article-content">
+        <h2>Grid vs Flex-Box</h2>
+        <div class="article-content-subtext">
+          <div class="article-content-subtext-text">
+            <h4>Linguagem/Skill:</h4>
+            <p>CSS</p>
+          </div>
+          <div class="article-content-subtext-text">
+            <h4>Categoria:</h4>
+            <p>FrontEnd</p>
+          </div>
+          <textarea name="" id="" cols="30"
+            rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.</textarea>
+        </div>
+        <div class="article-buttons">
+          <button><i class="fa-regular fa-trash-can"></i></button>
+          <button><i class="fa-regular fa-pen-to-square"></i></button>
+          <button><i class="fa-brands fa-youtube"></i></button>
+        </div>
+      </article>
+
+      <article class="article-content">
+        <h2>Grid vs Flex-Box</h2>
+        <div class="article-content-subtext">
+          <div class="article-content-subtext-text">
+            <h4>Linguagem/Skill:</h4>
+            <p>CSS</p>
+          </div>
+          <div class="article-content-subtext-text">
+            <h4>Categoria:</h4>
+            <p>FrontEnd</p>
+          </div>
+          <textarea name="" id="" cols="30"
+            rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.</textarea>
+        </div>
+        <div class="article-buttons">
+          <button><i class="fa-regular fa-trash-can"></i></button>
+          <button><i class="fa-regular fa-pen-to-square"></i></button>
+          <button><i class="fa-brands fa-youtube"></i></button>
+        </div>
+      </article>
+
+      <article class="article-content">
+        <h2>Grid vs Flex-Box</h2>
+        <div class="article-content-subtext">
+          <div class="article-content-subtext-text">
+            <h4>Linguagem/Skill:</h4>
+            <p>CSS</p>
+          </div>
+          <div class="article-content-subtext-text">
+            <h4>Categoria:</h4>
+            <p>FrontEnd</p>
+          </div>
+          <textarea name="" id="" cols="30"
+            rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.</textarea>
+        </div>
+        <div class="article-buttons">
+          <button><i class="fa-regular fa-trash-can"></i></button>
+          <button><i class="fa-regular fa-pen-to-square"></i></button>
+          <button><i class="fa-brands fa-youtube"></i></button>
+        </div>
+      </article>
+
+    </main>
+
+  </section>
 </body>
 
 </html>

@@ -13,9 +13,7 @@
 :root {
   --purple_color: rgb(181, 121, 238);
   --left_side_color: #1E195B;
-  --right_side_color: #F6F7F9
-    /*#F6F7F9*/
-  ;
+  --right_side_color: #F6F7F9;
   --green_color: #3ACE5A;
   --text_color: white;
   --reset_color: #DEF010;
@@ -119,11 +117,11 @@ textarea {
   width: 45%;
 }
 
-.form-container-buttons #save {
+.form-container-buttons #save-form {
   background-color: var(--save_color);
 }
 
-.form-container-buttons #reset {
+.form-container-buttons #reset-form {
   background-color: var(--reset_color);
 }
 
@@ -134,7 +132,6 @@ textarea {
   background-color: var(--right_side_color);
   flex: 2;
   flex-direction: column;
-  align-items: center;
   /*-----------------*/
   height: 100vh
 }
@@ -271,3 +268,45 @@ i {
 .article-buttons button:last-child:hover {
   color: red;
 }
+
+.iframe-youtube-none {
+  display: none;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  height: 500px;
+  width: 700px;
+}
+
+.iframe-youtube-block {
+  padding: 10px;
+  margin: 0 0 20px 0;
+  height: 500px;
+  width: 700px;
+}
+
+/*
+.iframe-youtube {
+  background-color: #78e08f;
+  padding: 10px;
+  margin: 0 0 20px 0;
+}
+
+@keyframes append-animate {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.new-iframe-youtube {
+  transform-origin: 50% 0;
+  animation: append-animate .3s linear;
+}
+*/
+
+/*--------------------------------------------------------------------------------------------------------*/

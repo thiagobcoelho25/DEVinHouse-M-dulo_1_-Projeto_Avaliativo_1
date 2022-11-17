@@ -10,7 +10,7 @@
     type="image/x-icon" />
   <title>DEVinKnowledge</title>
   <link rel="stylesheet" href="style.css">
-  <script async src="index.js" type="module"></script>
+  <script async src="./index.js" type="module"></script>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
       </div>
     </header>
 
-    <form action="" method="post">
+    <form id="form-post" action="" method="post">
       <div class="form-container-input-label">
         <label for="titulo">Título</label>
         <input id="titulo" type="text" placeholder="Digite um título" minlength="8" maxlength="64" required>
@@ -42,10 +42,10 @@
         <label for="categoria">Categoria</label>
         <select id="categoria" name="categoria" required>
           <option value="" selected disabled hidden>Selecione uma categoria</option>
-          <option value="frontend">FrontEnd</option>
-          <option value="backend">BackEnd </option>
-          <option value="fullstack ">FullStack </option>
-          <option value="comportamental_soft">Comportamental/Soft</option>
+          <option value="FrontEnd">FrontEnd</option>
+          <option value="BackEnd">BackEnd </option>
+          <option value="FullStack">FullStack </option>
+          <option value="SoftSkill">Comportamental/Soft</option>
         </select>
       </div>
 
@@ -61,8 +61,8 @@
       </div>
 
       <div class="form-container-buttons">
-        <button id="reset" type="reset" class="button">Limpar</button>
-        <button id="save" type="submit" class="button">Salvar</button>
+        <button id="reset-form" type="reset" class="button">Limpar</button>
+        <button id="save-form" type="submit" class="button">Salvar</button>
       </div>
     </form>
 
@@ -70,15 +70,15 @@
 
   <section class="left-side">
     <div class="container-cards">
-      <div id="container_card_total" class="container-card">total <p>20</p>
+      <div id="Total" class="container-card">total <p>0</p>
       </div>
-      <div class="container-card">FrontEnd <p>2</p>
+      <div id="FrontEnd" class="container-card">FrontEnd <p>0</p>
       </div>
-      <div class="container-card">BackEnd <p>3</p>
+      <div id="BackEnd" class="container-card">BackEnd <p>0</p>
       </div>
-      <div class="container-card">FullStack <p>21</p>
+      <div id="FullStack" class="container-card">FullStack <p>0</p>
       </div>
-      <div class="container-card">SoftSkill <p>7</p>
+      <div id="SoftSkill" class="container-card">SoftSkill <p>0</p>
       </div>
     </div>
 
@@ -89,8 +89,8 @@
       <button type="reset"><i class="fa-solid fa-x"></i></button>
     </form>
 
-    <main class="main-content">
-      <article class="article-content">
+    <main id="main_content" class="main-content">
+      <!--<article class="article-content">
         <h2>Grid vs Flex-Box</h2>
         <div class="article-content-subtext">
           <div class="article-content-subtext-text">
@@ -151,7 +151,7 @@
           <button><i class="fa-regular fa-pen-to-square"></i></button>
           <button><i class="fa-brands fa-youtube"></i></button>
         </div>
-      </article>
+      </article>-->
 
     </main>
 

@@ -154,11 +154,8 @@ function criarHTMLArtigo(artigo, html_main_content) {
   button_delete.appendChild(i_delete)
   button_delete.id = artigo.id
 
-  button_delete.addEventListener('click', async function (e) {
-
-    const id = e.currentTarget.id
-    await deletarDados(id)
-    deletarArtigo(Number.parseInt(id))
+  button_delete.addEventListener('click', function (e) {
+    abrirModalDelecao()
   })
 
   const button_edit = document.createElement('button')
@@ -170,59 +167,66 @@ function criarHTMLArtigo(artigo, html_main_content) {
   div_article_buttons.appendChild(button_edit)
 
   if (artigo.youtube_link) {
-    const button_youtube = document.createElement('button')
-    const i_youtube = document.createElement('i')
-    button_youtube.id = artigo.id
-    i_youtube.className = "fa-brands fa-youtube"
-    button_youtube.appendChild(i_youtube)
-
-    /* button_youtube.className = 'button_youtube'
-     button_youtube.name = 'close'*/
-
-    /*button_youtube.addEventListener('click', (e) => {
-      const name = e.currentTarget.name
-      const id = Number.parseInt(e.currentTarget.id)
-      const article_div = document.getElementById(`${id}`)
-
-      if (name === 'close') {
-        const artigo = lista_artigos.find(artigo => artigo.id === id)
-        const iframe = document.createElement('iframe')
-        iframe.src = artigo.youtube_link
-        iframe.height = "500px"
-        iframe.width = "700px"
-
-        iframe.classList.add('box', 'new-box');
-        e.currentTarget.name = 'open'
-
-        article_div.appendChild(iframe)
-      } else {
-        e.currentTarget.name = 'close'
-        article_div.removeChild(article_div.lastChild);
-      }
-    })
-    */
-
-    button_youtube.addEventListener('click', (e) => {
-      const id = Number.parseInt(e.currentTarget.id)
-      const iframe_div = document.getElementById(`${id}`).lastChild
-
-      iframe_div.className = iframe_div.className === 'iframe-youtube-none' ? 'iframe-youtube-block' : 'iframe-youtube-none'
-    })
-
-    div_article_buttons.appendChild(button_youtube)
+    criarButtonHTMLYoutube(artigo, div_article_buttons)
   }
 
   article_content.appendChild(div_article_buttons)
 
   if (artigo.youtube_link) {
     const iframe_youtube = document.createElement('iframe')
-    iframe_youtube.className = 'iframe-youtube-none'
+    iframe_youtube.className = 'iframe-youtube'
+    iframe_youtube.style.display = 'none'
     iframe_youtube.src = artigo.youtube_link
 
     article_content.appendChild(iframe_youtube)
   }
 
   html_main_content.appendChild(article_content)
+}
+
+function criarButtonHTMLYoutube(artigo, div_article_buttons) {
+  const button_youtube = document.createElement('button')
+  const i_youtube = document.createElement('i')
+  button_youtube.id = artigo.id
+  button_youtube.className = "youtube-button"
+  i_youtube.className = "fa-brands fa-youtube"
+  button_youtube.appendChild(i_youtube)
+
+  /* button_youtube.className = 'button_youtube'
+   button_youtube.name = 'close'*/
+
+  /*button_youtube.addEventListener('click', (e) => {
+    const name = e.currentTarget.name
+    const id = Number.parseInt(e.currentTarget.id)
+    const article_div = document.getElementById(`${id}`)
+
+    if (name === 'close') {
+      const artigo = lista_artigos.find(artigo => artigo.id === id)
+      const iframe = document.createElement('iframe')
+      iframe.src = artigo.youtube_link
+      iframe.height = "500px"
+      iframe.width = "700px"
+
+      iframe.classList.add('box', 'new-box');
+      e.currentTarget.name = 'open'
+
+      article_div.appendChild(iframe)
+    } else {
+      e.currentTarget.name = 'close'
+      article_div.removeChild(article_div.lastChild);
+    }
+  })
+  */
+
+  button_youtube.addEventListener('click', (e) => {
+    const id = Number.parseInt(e.currentTarget.id)
+    const iframe_div = document.getElementById(`${id}`).lastChild
+
+    //iframe_div.className = iframe_div.className === 'iframe-youtube-none' ? 'iframe-youtube-block' : 'iframe-youtube-none'
+    iframe_div.style.display = iframe_div.style.display === 'none' ? 'block' : 'none'
+  })
+
+  div_article_buttons.appendChild(button_youtube)
 }
 
 function criarHTMLQuantidadeCategoria(categoria, quantidade) {
@@ -291,3 +295,44 @@ function atualizarTela(dados, container_cards = 0, main_content) {
 
   atualizarTela(lista_artigos, container_cards, main_content)
 })()
+
+/* funcções dos modais */
+
+function abrirModalDelecao() {
+  modal_container_delete.style.display = 'block'
+  deletebtn.id = '1'
+}
+
+const modal_container_delete = document.getElementById('id01')
+
+const span_close_modal_delete = document.getElementsByClassName('close')[0]
+
+span_close_modal_delete.addEventListener('click', (e) => {
+  modal_container_delete.style.display = 'none'
+  deletebtn.removeAttribute('id')
+})
+
+const cancelbtn = document.getElementsByClassName('cancelbtn')[0]
+
+cancelbtn.addEventListener('click', (e) => {
+  modal_container_delete.style.display = 'none'
+  deletebtn.removeAttribute('id')
+})
+
+const deletebtn = document.getElementsByClassName('deletebtn')[0]
+
+deletebtn.addEventListener('click', async (e) => {
+  modal_container_delete.style.display = 'none'
+
+  const id = deletebtn.id
+  await deletarDados(id)
+  deletarArtigo(Number.parseInt(id))
+
+  alert('DADOS DELETADOS COM SUCESSO!')
+})
+
+modal_container_edit = document.getElementById('id02')
+
+function abrirModalEdicao() {
+
+}

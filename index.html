@@ -90,69 +90,6 @@
     </form>
 
     <main id="main_content" class="main-content">
-      <!--<article class="article-content">
-        <h2>Grid vs Flex-Box</h2>
-        <div class="article-content-subtext">
-          <div class="article-content-subtext-text">
-            <h4>Linguagem/Skill:</h4>
-            <p>CSS</p>
-          </div>
-          <div class="article-content-subtext-text">
-            <h4>Categoria:</h4>
-            <p>FrontEnd</p>
-          </div>
-          <textarea name="" id="" cols="30"
-            rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.</textarea>
-        </div>
-        <div class="article-buttons">
-          <button><i class="fa-regular fa-trash-can"></i></button>
-          <button><i class="fa-regular fa-pen-to-square"></i></button>
-          <button><i class="fa-brands fa-youtube"></i></button>
-        </div>
-      </article>
-
-      <article class="article-content">
-        <h2>Grid vs Flex-Box</h2>
-        <div class="article-content-subtext">
-          <div class="article-content-subtext-text">
-            <h4>Linguagem/Skill:</h4>
-            <p>CSS</p>
-          </div>
-          <div class="article-content-subtext-text">
-            <h4>Categoria:</h4>
-            <p>FrontEnd</p>
-          </div>
-          <textarea name="" id="" cols="30"
-            rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.</textarea>
-        </div>
-        <div class="article-buttons">
-          <button><i class="fa-regular fa-trash-can"></i></button>
-          <button><i class="fa-regular fa-pen-to-square"></i></button>
-          <button><i class="fa-brands fa-youtube"></i></button>
-        </div>
-      </article>
-
-      <article class="article-content">
-        <h2>Grid vs Flex-Box</h2>
-        <div class="article-content-subtext">
-          <div class="article-content-subtext-text">
-            <h4>Linguagem/Skill:</h4>
-            <p>CSS</p>
-          </div>
-          <div class="article-content-subtext-text">
-            <h4>Categoria:</h4>
-            <p>FrontEnd</p>
-          </div>
-          <textarea name="" id="" cols="30"
-            rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.</textarea>
-        </div>
-        <div class="article-buttons">
-          <button><i class="fa-regular fa-trash-can"></i></button>
-          <button><i class="fa-regular fa-pen-to-square"></i></button>
-          <button><i class="fa-brands fa-youtube"></i></button>
-        </div>
-      </article>-->
-
     </main>
 
   </section>
@@ -160,17 +97,60 @@
   <div id="id01" class="modal" style="display: none;">
     <span class="close" title="Close Modal">×</span>
     <form class="modal-content" action="">
-      <div class="container">
-        <h1>Deletar Artigo</h1>
-        <p>Tem certeza em deletar esse artigo </p>
-
-        <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'"
-            class="cancelbtn">Cancelar</button>
-          <button type="button" onclick="document.getElementById('id01').style.display='none'"
-            class="deletebtn">Deletar</button>
-        </div>
+      <h1>Deletar Artigo</h1>
+      <p>Tem certeza em deletar esse artigo </p>
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancelar</button>
+        <button type="button" class="deletebtn">Deletar</button>
       </div>
+    </form>
+  </div>
+
+  <div id="id02" class="modal" style="display: none;">
+    <span class="close" title="Close Modal">×</span>
+    <form class="modal-content" action="">
+
+      <h1>Tela de Edição</h1>
+
+      <input id="id" type="text" style="display: none;">
+      <div class="form-container-input-label">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" placeholder="Digite um título" minlength="8" maxlength="64" required>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="linguagem_skill">Linguagem/Skill</label>
+        <input id="linguagem_skill" type="text" placeholder="Digite uma linguagem ou skill" minlength="2" maxlength="16"
+          required>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" required>
+          <option value="" selected disabled hidden>Selecione uma categoria</option>
+          <option value="FrontEnd">FrontEnd</option>
+          <option value="BackEnd">BackEnd </option>
+          <option value="FullStack">FullStack </option>
+          <option value="SoftSkill">Comportamental/Soft</option>
+        </select>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" id="descricao" cols="30" rows="10"
+          placeholder="Escreva aqui o detalhamento da sua dica..." minlength="16" maxlength="512" required></textarea>
+      </div>
+
+      <div class="form-container-input-label">
+        <label for="youtube_link">Video do YouTube</label>
+        <input id="youtube_link" name="youtube_link" type="url" placeholder="https://suaurl.com" pattern="https?://.+">
+      </div>
+
+      <div class="clearfix">
+        <button type="reset" class="cancel-edit">Cancelar</button>
+        <button type="submit" class="save-edit">Salvar</button>
+      </div>
+
     </form>
   </div>
 </body>

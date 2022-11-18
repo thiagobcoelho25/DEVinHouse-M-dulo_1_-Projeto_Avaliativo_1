@@ -18,6 +18,7 @@
   --text_color: white;
   --reset_color: #DEF010;
   --save_color: #3ACE5A;
+  --border_color_input_right: #D9D9D9
 }
 
 body {
@@ -79,6 +80,8 @@ header {
   border-radius: 10px;
   height: 30px;
   padding-left: 5px;
+  border: solid var(--border_color_input_right);
+  border-width: 3px;
 }
 
 select:invalid {
@@ -87,13 +90,20 @@ select:invalid {
 
 .form-container-input-label select {
   border-radius: 10px;
-  height: 30px
+  height: 30px;
+  border: solid var(--border_color_input_right);
+  border-width: 3px;
 }
 
 textarea {
   border-radius: 10px;
   padding-left: 5px;
   resize: none;
+}
+
+.right-side form textarea {
+  border: solid var(--border_color_input_right);
+  border-width: 3px;
 }
 
 #youtube_link:invalid {
@@ -115,6 +125,10 @@ textarea {
   border-radius: 10px;
   height: 30px;
   width: 45%;
+  border: solid var(--border_color_input_right);
+  border-width: 3px;
+  color: white;
+  font-weight: bolder;
 }
 
 .form-container-buttons #save-form {
@@ -279,57 +293,6 @@ i {
   border-width: 3px;
 }
 
-
-
-/*
-.iframe-youtube {
-  background-color: #78e08f;
-  padding: 10px;
-  margin: 0 0 20px 0;
-}
-
-@keyframes append-animate {
-  from {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-.new-iframe-youtube {
-  transform-origin: 50% 0;
-  animation: append-animate .3s linear;
-}
-*/
-
-/* Float cancel and delete buttons and add an equal width */
-.cancelbtn,
-.deletebtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add a color to the cancel button */
-.cancelbtn {
-  background-color: #ccc;
-  color: black;
-}
-
-/* Add a color to the delete button */
-.deletebtn {
-  background-color: #f44336;
-}
-
-/* Add padding and center-align text to the container */
-.container {
-  padding: 16px;
-  text-align: center;
-}
-
 /* The Modal (background) */
 .modal {
   display: none;
@@ -351,13 +314,35 @@ i {
 
 /* Modal Content/Box */
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  align-items: center;
   background-color: #fefefe;
-  /* margin: 5% auto 15% auto; */
-  margin: 20% auto 20% auto;
+  margin: auto;
   /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
+  width: 25%;
+  gap: 10px;
+}
+
+.clearfix {
+  display: flex;
+  flex-direction: row;
   width: 50%;
-  /* Could be more or less, depending on screen size */
+  justify-content: center;
+  gap: 20px;
+}
+
+.deletebtn,
+.cancelbtn {
+  width: 50%;
+  padding: 14px 20px;
+}
+
+.deletebtn {
+  background-color: #f44336;
+  color: white;
 }
 
 /* Style the horizontal ruler */
@@ -387,4 +372,28 @@ hr {
   content: "";
   clear: both;
   display: table;
+}
+
+.modal-content label {
+  color: black;
+}
+
+.save-edit,
+.cancel-edit {
+  border-radius: 10px;
+  height: 30px;
+  width: 45%;
+  border: solid var(--border_color_input_right);
+  border-width: 3px;
+  color: white;
+  font-weight: bolder;
+}
+
+.save-edit {
+  background-color: var(--save_color);
+}
+
+.modal-content textarea {
+  border: solid var(--border_color_input_right);
+  border-width: 2px;
 }

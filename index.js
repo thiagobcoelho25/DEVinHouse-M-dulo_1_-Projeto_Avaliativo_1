@@ -69,6 +69,17 @@ async function buscarDados() {
   return await resultado.json();
 }
 
+async function atualizarDados(data) {
+  console.log(data)
+  const resultado = await fetch(`${BASE_URL}/${data.id}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json; charset=UTF-8' },
+    body: JSON.stringify(data)
+  });
+
+  return await resultado.json();
+}
+
 async function enviarDados(data) {
 
   const resultado = await fetch(BASE_URL, {
@@ -155,13 +166,20 @@ function criarHTMLArtigo(artigo, html_main_content) {
   button_delete.id = artigo.id
 
   button_delete.addEventListener('click', function (e) {
-    abrirModalDelecao()
+    const id = e.currentTarget.id
+    abrirModalDelecao(id)
   })
 
   const button_edit = document.createElement('button')
   const i_edit = document.createElement('i')
   i_edit.className = "fa-regular fa-pen-to-square"
   button_edit.appendChild(i_edit)
+  button_edit.id = artigo.id
+
+  button_edit.addEventListener('click', (e) => {
+    const id = e.currentTarget.id
+    abrirModalEdicao(id)
+  })
 
   div_article_buttons.appendChild(button_delete)
   div_article_buttons.appendChild(button_edit)
@@ -296,43 +314,108 @@ function atualizarTela(dados, container_cards = 0, main_content) {
   atualizarTela(lista_artigos, container_cards, main_content)
 })()
 
-/* funcções dos modais */
-
-function abrirModalDelecao() {
-  modal_container_delete.style.display = 'block'
-  deletebtn.id = '1'
-}
+/* ----------------------------------------------------------------------------------------------- */
+// FUNÇÕES DE MODAIS
 
 const modal_container_delete = document.getElementById('id01')
 
 const span_close_modal_delete = document.getElementsByClassName('close')[0]
 
+const cancelbtn_delete = document.getElementsByClassName('cancelbtn')[0]
+
+const deletebtn_delete = document.getElementsByClassName('deletebtn')[0]
+
+function abrirModalDelecao(id) {
+  modal_container_delete.style.display = 'flex'
+  deletebtn_delete.id = id
+}
+
 span_close_modal_delete.addEventListener('click', (e) => {
   modal_container_delete.style.display = 'none'
-  deletebtn.removeAttribute('id')
+  deletebtn_delete.removeAttribute('id')
 })
 
-const cancelbtn = document.getElementsByClassName('cancelbtn')[0]
-
-cancelbtn.addEventListener('click', (e) => {
+cancelbtn_delete.addEventListener('click', (e) => {
   modal_container_delete.style.display = 'none'
-  deletebtn.removeAttribute('id')
+  deletebtn_delete.removeAttribute('id')
 })
 
-const deletebtn = document.getElementsByClassName('deletebtn')[0]
-
-deletebtn.addEventListener('click', async (e) => {
+deletebtn_delete.addEventListener('click', async (e) => {
   modal_container_delete.style.display = 'none'
 
-  const id = deletebtn.id
-  await deletarDados(id)
-  deletarArtigo(Number.parseInt(id))
+  const id = deletebtn_delete.id
 
-  alert('DADOS DELETADOS COM SUCESSO!')
+  try {
+    await deletarDados(id)
+    deletarArtigo(Number.parseInt(id))
+
+    alert('DADOS DELETADOS COM SUCESSO!')
+  } catch (error) {
+    alert(`ERROR!\n não conseguimos completar a requisição devido a:\n ${error}`)
+  }
 })
 
-modal_container_edit = document.getElementById('id02')
+const modal_container_edit = document.getElementById('id02')
 
-function abrirModalEdicao() {
+const form_edit = document.getElementsByClassName('modal-content')[1]
 
+const span_close_modal_edit = document.getElementsByClassName('close')[1]
+
+const cancel_edit = document.getElementsByClassName('cancel-edit')[0]
+
+
+function abrirModalEdicao(id) {
+  modal_container_edit.style.display = 'flex'
+
+  const artigo = lista_artigos.find(elemento => elemento.id === Number.parseInt(id))
+
+
+  form_edit.querySelector('#id').value = artigo.id
+  form_edit.querySelector('#titulo').value = artigo.titulo
+  form_edit.querySelector('#linguagem_skill').value = artigo.linguagem_skill
+  form_edit.querySelector('#categoria').value = artigo.categoria
+  form_edit.querySelector('#descricao').value = artigo.descricao
+  form_edit.querySelector('#youtube_link').value = artigo.youtube_link
 }
+
+form_edit.addEventListener('submit', async (e) => {
+  e.preventDefault()
+
+  const id = Number.parseInt(e.target.id.value);
+  const titulo = e.target.titulo.value;
+  const linguagem_skill = e.target.linguagem_skill.value
+  const categoria = e.target.categoria.value
+  const descricao = e.target.descricao.value;
+  const youtube_link = e.target.youtube_link.value ? e.target.youtube_link.value : null
+
+  try {
+    const artigo = await atualizarDados({ "id": id, "titulo": titulo, "linguagem_skill": linguagem_skill, "categoria": categoria, "descricao": descricao, "youtube_link": youtube_link })
+
+    var index = lista_artigos.findIndex(elemento => elemento.id === id);
+    lista_artigos[index] = artigo
+
+    atualizarTela(lista_artigos, container_cards, main_content)
+
+    alert('DADOS ATUALIZADOS COM SUCESSO!')
+    modal_container_edit.style.display = 'none'
+  } catch (error) {
+    alert(`ERROR!\n não conseguimos completar a requisição devido a:\n ${error}`)
+  }
+})
+
+span_close_modal_edit.addEventListener('click', (e) => {
+  modal_container_edit.style.display = 'none'
+})
+
+form_edit.addEventListener("reset", (e) => {
+  modal_container_edit.style.display = 'none'
+})
+
+window.addEventListener('click', function (event) {
+  if (event.target === modal_container_delete) {
+    modal_container_delete.style.display = "none";
+    deletebtn_delete.removeAttribute('id')
+  } else if (event.target === modal_container_edit) {
+    modal_container_edit.style.display = "none";
+  }
+}) 

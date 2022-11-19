@@ -12,11 +12,6 @@ const container_cards = document.getElementsByClassName("container-cards")[0]
 
 const form_search_elements_container = document.getElementsByClassName("search-elements-container")[0]
 
-/* Duvida icone interferindo no bottao -> troqquei target por currentTarget
-  Duvida de não poder passar para funções mais de uma vez e.currentTarget.Value -> exemplo no botao de deletar
-  Duvida em criar modal para confirmação e edição
-  Duvida Para trocar caminho/origem das pastas do github, por causa do conflito do json-server
-  */
 
 save_form.addEventListener('submit', async function (e) {
   e.preventDefault()
@@ -163,10 +158,10 @@ function criarHTMLArtigo(artigo, html_main_content) {
   const i_delete = document.createElement('i')
   i_delete.className = "fa-regular fa-trash-can"
   button_delete.appendChild(i_delete)
-  button_delete.id = artigo.id
+  button_delete.dataset.idArtigo = artigo.id
 
   button_delete.addEventListener('click', function (e) {
-    const id = e.currentTarget.id
+    const id = e.currentTarget.dataset.idArtigo
     abrirModalDelecao(id)
   })
 
@@ -174,10 +169,10 @@ function criarHTMLArtigo(artigo, html_main_content) {
   const i_edit = document.createElement('i')
   i_edit.className = "fa-regular fa-pen-to-square"
   button_edit.appendChild(i_edit)
-  button_edit.id = artigo.id
+  button_edit.dataset.idArtigo = artigo.id
 
   button_edit.addEventListener('click', (e) => {
-    const id = e.currentTarget.id
+    const id = e.currentTarget.dataset.idArtigo
     abrirModalEdicao(id)
   })
 
@@ -205,7 +200,7 @@ function criarHTMLArtigo(artigo, html_main_content) {
 function criarButtonHTMLYoutube(artigo, div_article_buttons) {
   const button_youtube = document.createElement('button')
   const i_youtube = document.createElement('i')
-  button_youtube.id = artigo.id
+  button_youtube.dataset.idArtigo = artigo.id
   button_youtube.className = "youtube-button"
   i_youtube.className = "fa-brands fa-youtube"
   button_youtube.appendChild(i_youtube)
@@ -237,7 +232,7 @@ function criarButtonHTMLYoutube(artigo, div_article_buttons) {
   */
 
   button_youtube.addEventListener('click', (e) => {
-    const id = Number.parseInt(e.currentTarget.id)
+    const id = Number.parseInt(e.currentTarget.dataset.idArtigo)
     const iframe_div = document.getElementById(`${id}`).lastChild
 
     //iframe_div.className = iframe_div.className === 'iframe-youtube-none' ? 'iframe-youtube-block' : 'iframe-youtube-none'
@@ -327,23 +322,23 @@ const deletebtn_delete = document.getElementsByClassName('deletebtn')[0]
 
 function abrirModalDelecao(id) {
   modal_container_delete.style.display = 'flex'
-  deletebtn_delete.id = id
+  deletebtn_delete.dataset.idArtigo = id
 }
 
 span_close_modal_delete.addEventListener('click', (e) => {
   modal_container_delete.style.display = 'none'
-  deletebtn_delete.removeAttribute('id')
+  deletebtn_delete.removeAttribute('data-id-artigo')
 })
 
 cancelbtn_delete.addEventListener('click', (e) => {
   modal_container_delete.style.display = 'none'
-  deletebtn_delete.removeAttribute('id')
+  deletebtn_delete.removeAttribute('data-id-artigo')
 })
 
 deletebtn_delete.addEventListener('click', async (e) => {
   modal_container_delete.style.display = 'none'
 
-  const id = deletebtn_delete.id
+  const id = deletebtn_delete.dataset.idArtigo
 
   try {
     await deletarDados(id)
@@ -361,7 +356,7 @@ const form_edit = document.getElementsByClassName('modal-content')[1]
 
 const span_close_modal_edit = document.getElementsByClassName('close')[1]
 
-const cancel_edit = document.getElementsByClassName('cancel-edit')[0]
+// const cancel_edit = document.getElementsByClassName('cancel-edit')[0]
 
 
 function abrirModalEdicao(id) {
@@ -414,7 +409,7 @@ form_edit.addEventListener("reset", (e) => {
 window.addEventListener('click', function (event) {
   if (event.target === modal_container_delete) {
     modal_container_delete.style.display = "none";
-    deletebtn_delete.removeAttribute('id')
+    deletebtn_delete.removeAttribute('data-id-artigo')
   } else if (event.target === modal_container_edit) {
     modal_container_edit.style.display = "none";
   }

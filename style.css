@@ -76,16 +76,18 @@ header {
   color: var(--text_color);
 }
 
+.form-container-input-label input::placeholder {
+  color: rgb(155, 155, 155)
+}
+
 .form-container-input-label input {
   border-radius: 10px;
   height: 30px;
   padding-left: 5px;
   border: solid var(--border_color_input_right);
   border-width: 3px;
-}
-
-select:invalid {
-  color: gray;
+  color: var(--left_side_color);
+  font-weight: bolder;
 }
 
 .form-container-input-label select {
@@ -93,12 +95,23 @@ select:invalid {
   height: 30px;
   border: solid var(--border_color_input_right);
   border-width: 3px;
+  color: var(--left_side_color);
+  font-weight: bolder;
 }
+
+.form-container-input-label select:invalid {
+  color: rgb(155, 155, 155)
+}
+
 
 textarea {
   border-radius: 10px;
   padding-left: 5px;
   resize: none;
+}
+
+textarea::placeholder {
+  color: rgb(155, 155, 155)
 }
 
 .right-side form textarea {

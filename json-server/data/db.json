@@ -1,0 +1,20 @@
+{
+  "resultados": [
+    {
+      "id": 1,
+      "titulo": "Grid vs Flex-Box",
+      "linguagem_skill": "CSS",
+      "categoria": "SoftSkill",
+      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.",
+      "youtube_link": null
+    },
+    {
+      "id": 2,
+      "titulo": "Grid vs Flex-Box",
+      "linguagem_skill": "CSS",
+      "categoria": "BackEnd",
+      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, modi harum mollitia culpa exercitationem possimus. Officia, ea minus voluptatum voluptatem ad est maiores eveniet? Quasi ab maxime distinctio aliquid molestias.",
+      "youtube_link": "https://www.youtube.com/watch?v=V5bv3OkCudQ"
+    }
+  ]
+}

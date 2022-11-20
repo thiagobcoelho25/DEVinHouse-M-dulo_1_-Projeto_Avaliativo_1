@@ -1,0 +1,26 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "json": "json-server --watch ./json-server/data/db.json",
+    "liver-server": "live-server --ignore=json-server .",
+    "all": "npm-run-all -p json liver-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagobcoelho25/DEVinHouse-M-dulo_1_-Projeto_Avaliativo_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thiagobcoelho25/DEVinHouse-M-dulo_1_-Projeto_Avaliativo_1/issues"
+  },
+  "homepage": "https://github.com/thiagobcoelho25/DEVinHouse-M-dulo_1_-Projeto_Avaliativo_1#readme",
+  "dependencies": {
+    "json-server": "^0.17.1",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5"
+  }
+}

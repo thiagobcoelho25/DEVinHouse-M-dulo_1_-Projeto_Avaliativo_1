@@ -27,6 +27,21 @@ Ao construir a aplicação proposta, foi colocada em prática os aprendizados em
 
 <br>
 
+# ✨ Features
+
+- [x] Cadastro de novos Itens
+- [x] Remoção de Itens
+- [x] Edição de Itens
+- [x] Aplicação persiste/carrega os dados em banco
+- [x] Filtro de Itens pelo titulo
+- [x] Estatísticas das quantidade de Itens por categoria
+
+#### **EXTRA:**
+
+- [x] Utilização de Modais para Edição e Deleção
+- [x] Botão Responsivo para videos do Youtube
+- [x] Validação de URL para videos
+
 # ✅ Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
